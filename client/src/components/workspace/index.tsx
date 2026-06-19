@@ -15,7 +15,7 @@ interface WorkSpaceProps {
 function WorkSpace({ isTerminalOpen = false, onToggleTerminal }: WorkSpaceProps) {
     const { activityState } = useAppContext()
     const { isSidebarOpen, activeView } = useViews()
-    const [terminalHeight, setTerminalHeight] = useState(300)
+    const terminalHeight = 300
 
     const getViewTitle = (view: string) => {
         switch(view) {
