@@ -1,0 +1,166 @@
+@import url("tldraw/tldraw.css");
+@import "./vscode.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .view-title {
+        @apply mb-2 w-full border-b pb-2 text-start text-lg;
+    }
+    
+    /* File Tree Styles */
+    .file-tree-item {
+        @apply flex items-center px-2 py-1 text-sm text-gray-200 hover:bg-gray-700/30 cursor-pointer transition-colors;
+    }
+    
+    .file-tree-item:hover {
+        background-color: rgba(55, 65, 81, 0.3);
+    }
+    
+    .file-tree-item.selected {
+        background-color: rgba(59, 130, 246, 0.2);
+        border-left: 2px solid #3b82f6;
+    }
+    
+    .file-tree-folder {
+        @apply flex items-center px-2 py-1 text-sm text-gray-200 hover:bg-gray-700/30 cursor-pointer transition-colors;
+    }
+    
+    .file-tree-folder:hover {
+        background-color: rgba(55, 65, 81, 0.3);
+    }
+    
+    .file-tree-indent {
+        @apply pl-6;
+    }
+    
+    /* Context Menu Styles */
+    .context-menu {
+        @apply absolute z-50 min-w-[150px] rounded-md border border-gray-600 bg-gray-800 p-1 shadow-lg;
+        backdrop-filter: blur(8px);
+    }
+    
+    .context-menu-item {
+        @apply flex w-full items-center gap-2 rounded-md px-2 py-1 text-sm hover:bg-gray-700 transition-colors;
+    }
+    
+    .context-menu-item.danger {
+        @apply text-red-400;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    font-family: "Space Grotesk", sans-serif;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: #1e1e1e;
+    color: #cccccc;
+
+    --sb-track-color: #2d2d30;
+    --sb-thumb-color: #424242;
+    --sb-size: 8px;
+}
+
+::-webkit-scrollbar {
+    width: var(--sb-size);
+    height: var(--sb-size);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 5px;
+    height: var(--sb-size);
+    width: var(--sb-size);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 4px;
+    height: var(--sb-size);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #525252;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Editor */
+
+.cm-editor {
+    max-height: 93vh;
+    background-color: #1e1e1e !important;
+}
+
+.cm-editor .cm-scroller {
+    font-family: "Fira Code", "Cascadia Code", "JetBrains Mono", "Space Mono", monospace;
+    background-color: #1e1e1e !important;
+    /* min-height: 100vh; */
+}
+
+.cm-editor .cm-focused {
+    outline: none;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .cm-editor {
+        max-height: calc(93vh - 60px);
+    }
+
+    .cm-editor .cm-scroller {
+        min-height: calc(93vh - 60px);
+    }
+}
+
+/* Github Corner */
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+        transform: rotate(10deg);
+    }
+}
