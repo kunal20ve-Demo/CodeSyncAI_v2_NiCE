@@ -18,9 +18,6 @@ function TerminalPanel({ onClose, onResize }: TerminalPanelProps) {
     const [historyIndex, setHistoryIndex] = useState(-1)
     const outputRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLInputElement>(null)
-    const [isResizing, setIsResizing] = useState(false)
-    const [startY, setStartY] = useState(0)
-    const [startHeight, setStartHeight] = useState(300)
 
     useEffect(() => {
         if (outputRef.current) {
@@ -103,26 +100,6 @@ function TerminalPanel({ onClose, onResize }: TerminalPanelProps) {
         }
     }
 
-    const handleMouseDown = (e: React.MouseEvent) => {
-        setIsResizing(true)
-        setStartY(e.clientY)
-        setStartHeight(300) // Current height
-        document.addEventListener('mousemove', handleMouseMove)
-        document.addEventListener('mouseup', handleMouseUp)
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-        if (!isResizing) return
-        const deltaY = startY - e.clientY
-        const newHeight = Math.max(100, Math.min(600, startHeight + deltaY))
-        onResize(newHeight)
-    }
-
-    const handleMouseUp = () => {
-        setIsResizing(false)
-        document.removeEventListener('mousemove', handleMouseMove)
-        document.removeEventListener('mouseup', handleMouseUp)
-    }
 
     const clearOutput = () => {
         setOutput([])

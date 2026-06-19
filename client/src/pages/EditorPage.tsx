@@ -53,8 +53,7 @@ function EditorPage() {
 
     return (
         <SimpleVideoCallProvider>
-            {status === USER_STATUS.ATTEMPTING_JOIN ||
-            status === USER_STATUS.CONNECTION_FAILED ? (
+            {status === USER_STATUS.ATTEMPTING_JOIN ? (
                 <ConnectionStatusPage />
             ) : (
                 <div className="vscode-container">
@@ -76,7 +75,6 @@ function EditorPage() {
                         <StatusBar 
                             onToggleTerminal={() => setIsTerminalOpen(!isTerminalOpen)}
                             isTerminalOpen={isTerminalOpen}
-                            setIsTerminalOpen={setIsTerminalOpen}
                         />
                     </div>
                 </div>

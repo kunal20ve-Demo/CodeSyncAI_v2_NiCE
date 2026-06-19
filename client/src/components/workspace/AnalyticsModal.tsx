@@ -25,7 +25,6 @@ export default function AnalyticsModal({ data, onClose }: AnalyticsModalProps) {
     const maxLOC = Math.max(1, ...data.map(d => d.linesOfCode))
     const maxEdits = Math.max(1, ...data.map(d => d.numberOfEdits))
     const maxFiles = Math.max(1, ...data.map(d => d.fileContributions))
-    const maxTime = Math.max(1, ...data.map(d => d.activeTime))
 
     return (
         <div style={{

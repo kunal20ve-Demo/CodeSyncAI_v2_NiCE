@@ -247,7 +247,7 @@ export const VideoCallProvider: React.FC<VideoCallProviderProps> = ({ children }
                 // Replace video track in peer connection
                 if (peerRef.current && localStream) {
                     const videoTrack = screenStream.getVideoTracks()[0]
-                    const sender = peerRef.current._pc?.getSenders().find(s => 
+                    const sender = (peerRef.current as any)._pc?.getSenders().find((s: any) => 
                         s.track && s.track.kind === 'video'
                     )
                     
@@ -274,7 +274,7 @@ export const VideoCallProvider: React.FC<VideoCallProviderProps> = ({ children }
                 // Stop screen sharing
                 if (originalStreamRef.current && peerRef.current) {
                     const videoTrack = originalStreamRef.current.getVideoTracks()[0]
-                    const sender = peerRef.current._pc?.getSenders().find(s => 
+                    const sender = (peerRef.current as any)._pc?.getSenders().find((s: any) => 
                         s.track && s.track.kind === 'video'
                     )
                     
