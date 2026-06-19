@@ -1,7 +1,6 @@
 import { useAppContext } from "@/context/AppContext"
 import { useViews } from "@/context/ViewContext"
 import { ACTIVITY_STATE } from "@/types/app"
-import React from "react"
 import DrawingEditor from "../drawing/DrawingEditor"
 import EditorComponent from "../editor/EditorComponent"
 import SidebarPanel from "../SidebarPanel"
