@@ -4,6 +4,7 @@ import { useSettings } from "@/context/SettingContext"
 import useResponsive from "@/hooks/useResponsive"
 import toast from "react-hot-toast"
 import { Activity, Loader2, CheckCircle, AlertTriangle, Lightbulb } from "lucide-react"
+import { getBackendUrl } from "@/utils/backendUrl"
 
 enum ReviewStatus {
     IDLE = "IDLE",
@@ -33,7 +34,7 @@ export default function ReviewView() {
         toast.loading(`Analyzing ${fileToAnalyze.name}...`, { id: "analyze" })
 
         try {
-            const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
+            const BACKEND_URL = getBackendUrl()
             const response = await fetch(`${BACKEND_URL}/api/analyze-code`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

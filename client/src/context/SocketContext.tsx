@@ -16,6 +16,7 @@ import {
 import { toast } from "react-hot-toast"
 import { Socket, io } from "socket.io-client"
 import { useAppContext } from "./AppContext"
+import { getBackendUrl } from "@/utils/backendUrl"
 
 const SocketContext = createContext<SocketContextType | null>(null)
 
@@ -27,7 +28,7 @@ export const useSocket = (): SocketContextType => {
     return context
 }
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
+const BACKEND_URL = getBackendUrl()
 
 const SocketProvider = ({ children }: { children: ReactNode }) => {
     const {
